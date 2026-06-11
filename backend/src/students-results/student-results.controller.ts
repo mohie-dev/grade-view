@@ -1,7 +1,17 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
-import { StudentResultsService } from './student-results.service';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
+import { LoginDto } from './dtos/login.dto';
+import { AuthService } from './auth.service';
 
 @Controller('students-results')
 export class StudentResultsController {
-  constructor(private studentResultsService: StudentResultsService) { }
+  constructor(
+    private readonly authService: AuthService,
+  ) {}
+
+  @Post('get-grade')
+  public async getStudentResult(
+    @Body() loginDto: LoginDto,
+  ) {
+    return this.authService.searchGrade(loginDto);
+  }
 }

@@ -5,6 +5,8 @@ import {
   StudentResultSchema,
 } from './schemas/student-result.schema';
 import { StudentResultsService } from './student-results.service';
+import { StudentResultsController } from './student-results.controller';
+import { AuthService } from './auth.service';
 
 @Module({
   imports: [
@@ -15,7 +17,8 @@ import { StudentResultsService } from './student-results.service';
       },
     ]),
   ],
-  providers: [StudentResultsService],
+  controllers: [StudentResultsController],
+  providers: [StudentResultsService, AuthService],
   exports: [StudentResultsService],
 })
 export class StudentResultsModule {}

@@ -33,6 +33,7 @@ export class ExcelParserService {
     }
   }
 
+  // This function will get the values of a row.
   private getRowValues(row: Row) {   
     if (!row) return [];
     const values: string[] = [];
@@ -42,6 +43,8 @@ export class ExcelParserService {
     return values;
   }
 
+  // This function will process the row and return a Record<string, string>.
+  // It takes a Row object and an array of headers as input.
   private processRow(row: Row, headers: string[]) {
     if (!row) return {};
     const rowData: Record<string, string> = {};

@@ -19,7 +19,6 @@ export class UploadController {
     @UploadedFile()
     file: Express.Multer.File,
   ) {
-    console.log('File uploaded:', file.originalname, file.size);
     return this.uploadService.import(file);
   }
 }

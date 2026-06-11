@@ -1,6 +1,7 @@
 import { RawStudentRow } from '../interfaces/raw-student-row.interface';
 
 export class StudentResultMapper {
+    // This function will map a raw student row to a StudentResult object.
     static map(row: RawStudentRow) {
         return {
             seatNumber: row.Seat_no,
@@ -10,12 +11,17 @@ export class StudentResultMapper {
             department: row.القسم_العلمى,
             level: row.المستوى,
 
+            // This function will extract subjects from the row.
             subjects: this.extractSubjects(row),
 
+            // This function will extract summary from the row.
             summary: this.extractSummary(row),
         };
     }
 
+    // This function will extract subjects from the row.
+    // It iterates through the keys of the row and checks if the key ends with '_Mark'.
+    // If it does, it adds the subject to the subjects array.
     private static extractSubjects(
         row: RawStudentRow,
     ) {
@@ -63,6 +69,8 @@ export class StudentResultMapper {
         return subjects;
     }
 
+    // This function will extract summary from the row.
+    // It checks for GPA, OverallGrade, PointsSum, AssignedHours, and PassedHours.
     private static extractSummary(
         row: RawStudentRow,
     ) {

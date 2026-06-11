@@ -14,7 +14,8 @@ export class StudentResultsService {
     private readonly studentResultModel: Model<StudentResultDocument>,
   ) {}
 
-  async createMany(
+  // This function will create multiple student results in the database.
+  public async createMany(
     studentResults: Partial<StudentResult>[],
   ) {
     return this.studentResultModel.insertMany(
@@ -22,11 +23,14 @@ export class StudentResultsService {
     );
   }
 
-  async replaceAll(
+  // This function will replace all the student results in the database.
+  public async replaceAll(
     studentResults: Partial<StudentResult>[],
   ) {
+    // This function will delete all the student results in the database.
     await this.studentResultModel.deleteMany({});
 
+    // This function will insert all the student results in the database.
     return this.studentResultModel.insertMany(
       studentResults,
     );

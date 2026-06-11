@@ -10,35 +10,30 @@ export class UploadService {
     private readonly studentResultsService: StudentResultsService,
   ) { }
 
-  async import(
+  // This function will import the excel file.
+  public async import(
     file: Express.Multer.File,
   ) {
 
+    // This function will parse the excel file.
     const rows =
       await this.excelParserService.parse(file);
 
+    // This function will map the raw student rows to StudentResult objects.
     const studentResults: any =
       rows.map((row) =>
         StudentResultMapper.map(row),
       );
 
+    // This function will replace all the student results in the database if any exist.
     const inserted =
       await this.studentResultsService.replaceAll(
         studentResults,
-
       );
-
-    console.log(
-      JSON.stringify(
-        inserted[0],
-        null,
-        2,
-      ),
-    );
 
     return {
       count: studentResults.length,
-      preview: studentResults[0],
+      preview: inserted[0],
     };
   }
 }

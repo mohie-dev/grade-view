@@ -19,7 +19,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="z-10 w-full text-center py-4">
         <p className="text-sm font-medium text-slate-500 dark:text-slate-400">
-          Developed by <span className="text-primary font-bold">Mohie</span>
+          © Developed by <a className="text-primary font-bold text-[24px]" href="https://mohie-dev.vercel.app/" target="_blank" rel="noopener noreferrer">Mohie</a>
         </p>
       </footer>
     </main>

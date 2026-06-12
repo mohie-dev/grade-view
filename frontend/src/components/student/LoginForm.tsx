@@ -40,7 +40,7 @@ export function LoginForm() {
       if (err.response?.status === 401 || err.response?.status === 404) {
         setError("بيانات الطالب غير صحيحة. يرجى التأكد من رقم الجلوس والرقم القومي.");
       } else {
-        setError("حدث خطأ أثناء الاتصال بالخادم. تأكد من أن الخادم يعمل وحاول مرة أخرى.");
+        setError("يرجى المحاولة مرة اخرى لاحقا");
       }
     } finally {
       setLoading(false);
@@ -86,7 +86,7 @@ export function LoginForm() {
               <Label htmlFor="seatNumber" className="text-sm font-semibold">رقم الجلوس</Label>
               <Input
                 id="seatNumber"
-                placeholder="مثال: 010069"
+                placeholder="ex: 123456"
                 value={seatNumber}
                 onChange={(e) => setSeatNumber(e.target.value)}
                 disabled={loading}

@@ -4,8 +4,8 @@ import { User, Hash, GraduationCap, Building2, Layers } from "lucide-react";
 
 export function StudentInfoCard({ student }: { student: StudentResult }) {
   return (
-    <Card className="shadow-md">
-      <CardHeader className="bg-primary/5 pb-4 border-b">
+    <Card className="shadow-md pt-0">
+      <CardHeader className="bg-primary/5 pt-4 pb-4 border-b">
         <CardTitle className="text-xl flex items-center gap-2">
           <User className="text-primary h-5 w-5" />
           معلومات الطالب

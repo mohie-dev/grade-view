@@ -12,7 +12,7 @@ export class StudentResultsService {
   constructor(
     @InjectModel(StudentResult.name)
     private readonly studentResultModel: Model<StudentResultDocument>,
-  ) {}
+  ) { }
 
   // This function will create multiple student results in the database.
   public async createMany(
@@ -34,5 +34,19 @@ export class StudentResultsService {
     return this.studentResultModel.insertMany(
       studentResults,
     );
+  }
+
+  public async getTop10Results() {
+    const students = await this.studentResultModel.find({})
+      .sort({
+        'summary.gpa': -1,
+      })
+      .limit(10);
+
+    return students.map((student) => ({
+      id: student.id,
+      name: student.fullName,
+      gpa: student.summary.gpa,
+    }));
   }
 }

@@ -1,11 +1,13 @@
 import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { LoginDto } from './dtos/login.dto';
 import { AuthService } from './auth.service';
+import { StudentResultsService } from './student-results.service';
 
 @Controller('students-results')
 export class StudentResultsController {
   constructor(
     private readonly authService: AuthService,
+    private readonly studentResultsService: StudentResultsService,
   ) {}
 
   @Post('get-grade')
@@ -13,5 +15,10 @@ export class StudentResultsController {
     @Body() loginDto: LoginDto,
   ) {
     return this.authService.searchGrade(loginDto);
+  }
+
+  @Get('get-top-10-results')
+  public async getTop10Results() {
+    return this.studentResultsService.getTop10Results();
   }
 }

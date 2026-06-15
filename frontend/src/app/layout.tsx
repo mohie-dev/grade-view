@@ -8,8 +8,8 @@ const cairo = Cairo({
 });
 
 export const metadata: Metadata = {
-  title: "Grade View - Student Portal",
-  description: "View your academic results easily and securely.",
+  title: "نتائج الامتحانات | Gate View",
+  description: "عرض النتيجة بسهولة وبأمان.",
 };
 
 export default function RootLayout({

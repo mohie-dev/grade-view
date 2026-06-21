@@ -1,7 +1,16 @@
-import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Query,
+  UseInterceptors,
+} from '@nestjs/common';
 import { LoginDto } from './dtos/login.dto';
 import { AuthService } from './auth.service';
 import { StudentResultsService } from './student-results.service';
+import { CacheInterceptor } from '@nestjs/cache-manager';
 
 @Controller('students-results')
 export class StudentResultsController {
@@ -10,6 +19,7 @@ export class StudentResultsController {
     private readonly studentResultsService: StudentResultsService,
   ) {}
 
+  @UseInterceptors(CacheInterceptor)
   @Post('get-grade')
   public async getStudentResult(
     @Body() loginDto: LoginDto,
